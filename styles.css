@@ -1,0 +1,298 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1b1b1b;
+    color: #a0a0a0;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+
+/* Шапка */
+
+.top {
+    position: fixed;  /* Фиксируем элемент наверху */
+    top: 0;           /* Прижимаем к верхней границе */
+    width: 100%;   /* Растягиваем на всю ширину */
+    background-color: #404040;
+    fill: #a0a0a0;     /* Цвет текста */
+    padding: 40px 60px 20px 0;    /* Отступы внутри */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: flex-end;
+    z-index: 100;
+}
+
+
+/* выподающее меню */
+
+.setMenu {
+    background-color: #505050;
+    border: 1px solid #717171;
+    width: 100%;
+    height: 100%;
+    z-index: 101;
+    position: fixed;
+    right: 0;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+}
+
+.setMenu.active {
+    transform: translateX(0);
+}
+
+
+.back {
+    fill: #a0a0a0;
+    margin-top: 20px;
+    margin-left: 20px;
+    rotate: 180deg;
+}
+
+
+.under {
+    width: 100vw;    /* Ширина 100% от ширины окна */
+    height: 100vh;   /* Высота 100% от высоты окна */
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    
+}
+
+
+.btnMenu {
+    border: none;
+    background: none;
+}
+
+/* Калькулятор */
+
+
+.container {
+    position: sticky;
+    /* background-color: rgb(38, 38, 38); */
+    width: 100%;
+    margin-top: 120px;
+    margin-bottom: 80px;
+    max-width: 350px;
+    padding: 20px;
+    
+}
+
+
+.positon{
+    /* background-color: aqua; */
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.dates {
+    display: flex;
+    /* justify-content: space-around; */
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+
+#long {
+    background-color: #263927;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-left: 30px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    fill: #a0a0a0;
+}
+
+#long:active {
+    fill: #d4d4d4;
+}
+
+
+#short {
+    background-color: #483030;
+    rotate: 180deg;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 30px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    fill: #a0a0a0;
+}
+
+#short:active {
+    fill: #d4d4d4;
+}
+
+#long.active {
+    background-color: #344e35;
+    fill: #d4d4d4;
+    box-shadow: 0 0 10px 0 #476a48;
+}
+
+#short.active {
+    background-color: #644343;
+    fill: #d4d4d4;
+    box-shadow: 0 0 10px 0 #644343;
+
+}
+
+
+
+input {
+    /* width: 100%; */
+    padding: 8px;
+    font-size: 14px;
+    margin: 4px 0 14px 0;
+    border-radius: 8px;
+    border: 1px solid #606060;
+    box-sizing: border-box;
+    background-color: #353535;
+    color: #ddd;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    /* user-select: auto; */
+}
+
+input::placeholder {
+    color: #969696;
+    opacity: 0.6;
+}
+
+input:focus {
+    background-color: #454545;
+    border-color: #949494;
+    outline: none;
+    box-shadow: 0 0 3px;
+}
+
+.resultBox {
+    margin-top: 15px;
+    margin-bottom: 20px;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #353535;
+    border: 1px solid #606060;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #ddd;
+}
+
+
+/* класс для уведомления о выборе Лонг или Шорт */
+.resultBoxErr {
+    color: #ff5050;
+}
+
+
+.out {
+    display: flex;
+    justify-content: space-around;
+    margin: 0 30px;
+}
+
+
+.btn {
+    position: relative;
+    overflow: hidden;
+    height: 40px;
+    border-radius: 100px;
+    width: 200px;
+    border: none;
+    margin: 3px 0 3px 75px;
+}
+
+
+.btnResult {
+    background-color: #353535;
+    color: #a0a0a0;
+    width: 300px;
+    height: 40px;
+    margin-right: 90px;
+}
+
+.btnResult:active {
+    background-color: #484848;
+    color: #d4d4d4;
+    box-shadow: 0 0 10px -5px #b8b8b8;
+}
+
+.btnReset {
+    background-color: #463d28;
+    fill: #a0a0a0;
+    width: 80px;
+    height: 30px;
+    padding: 2px 8px 0 5px;
+    /* display: flex;
+    justify-content: center; */
+    margin-left: 10px;
+    right: 80px;
+    margin-top: 8px;
+}
+
+.btnReset:active {
+    fill: #d4d4d4;
+    background-color: #736442;
+    box-shadow: 0 0 10px -5px #cdb377;
+}
+
+
+
+/* ТрэйдингВью */
+.trade {
+    width: 100%;
+    height: 100%;
+    display: none
+}
+
+
+/* Нижняя панель */
+
+.niz {
+    position: fixed;  /* Фиксируем элемент наверху */
+    bottom: 0;           /* Прижимаем к верхней границе */
+    width: 94%;      /* Растягиваем на всю ширину */
+    margin-bottom: 20px;
+    border-radius: 30px;
+    background-color: #404040; /* Пример фона для наглядности */
+    fill: #a0a0a0;     /* Цвет текста */
+    padding: 10px;    /* Отступы внутри */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Тень для эффекта */
+    justify-content: space-around;
+    display: flex;
+    /* z-index: 102; */
+}
+
+.btnMenu:active {
+    fill: #d4d4d4;
+}
+
+#btnCalulator.active {
+    /* background-color: #344e35; */
+    fill: #d4d4d4;
+    filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.4));
+}
+
+#tradingView.active {
+    /* background-color: #344e35; */
+    fill: #d4d4d4;
+    filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.4));
+}
