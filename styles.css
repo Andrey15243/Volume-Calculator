@@ -12,7 +12,7 @@ body {
     height: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     background-color: #1b1b1b;
     color: #d0d0d0;
     -webkit-user-select: none;
