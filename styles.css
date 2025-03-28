@@ -87,7 +87,7 @@ body {
 
 .container {
     position: sticky;
-    background-color: rgb(38, 38, 38);
+/*     background-color: rgb(38, 38, 38); */
     width: 100%;
     margin-top: 70px;
     margin-bottom: 80px;
