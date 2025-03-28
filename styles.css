@@ -1,298 +1,548 @@
-html,
 body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #ffffff, #ffffff);
+    text-align: center;
     margin: 0;
     padding: 0;
-    width: 100%;
-    height: 100%;
+    height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
-    background-color: #1b1b1b;
-    color: #a0a0a0;
-    -webkit-user-select: none;
-    user-select: none;
+    align-items: flex-start;
+    transition: background 0.3s ease, color 0.3s ease;
 }
-
-
-/* Шапка */
-
-.top {
-    position: fixed;  /* Фиксируем элемент наверху */
-    top: 0;           /* Прижимаем к верхней границе */
-    width: 100%;   /* Растягиваем на всю ширину */
-    background-color: #404040;
-    fill: #a0a0a0;     /* Цвет текста */
-    padding: 40px 60px 20px 0;    /* Отступы внутри */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    display: flex;
-    justify-content: flex-end;
-    z-index: 100;
-}
-
-
-/* выподающее меню */
-
-.setMenu {
-    background-color: #505050;
-    border: 1px solid #717171;
-    width: 100%;
-    height: 100%;
-    z-index: 101;
-    position: fixed;
-    right: 0;
-    transform: translateX(100%);
-    transition: transform 0.3s ease;
-}
-
-.setMenu.active {
-    transform: translateX(0);
-}
-
-
-.back {
-    fill: #a0a0a0;
-    margin-top: 20px;
-    margin-left: 20px;
-    rotate: 180deg;
-}
-
-
-.under {
-    width: 100vw;    /* Ширина 100% от ширины окна */
-    height: 100vh;   /* Высота 100% от высоты окна */
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    
-}
-
-
-.btnMenu {
-    border: none;
-    background: none;
-}
-
-/* Калькулятор */
-
 
 .container {
-    position: sticky;
-    /* background-color: rgb(38, 38, 38); */
-    width: 100%;
-    margin-top: 120px;
-    margin-bottom: 80px;
-    max-width: 350px;
+    background-color: #fff;
     padding: 20px;
-    
-}
-
-
-.positon{
-    /* background-color: aqua; */
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+    width: 100%;
+    max-width: 450px;
+    height: auto;
     display: flex;
-    justify-content: space-around;
-    margin-bottom: 20px;
-}
-
-.dates {
-    display: flex;
-    /* justify-content: space-around; */
     flex-direction: column;
+    justify-content: flex-start;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    display: block;
+}
+
+h2 {
+    font-size: 20px;
     margin-bottom: 15px;
+    color: #333;
 }
 
-
-#long {
-    background-color: #263927;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    margin-left: 30px;
-    border: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    fill: #a0a0a0;
+.warning {
+    font-size: 16px;
+    color: #d9534f;
+    font-weight: bold;
+    margin-bottom: 10px;
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.5s ease-out, visibility 0s 0.5s;
 }
 
-#long:active {
-    fill: #d4d4d4;
+.warning.hidden {
+    visibility: hidden;
+    opacity: 0;
 }
 
-
-#short {
-    background-color: #483030;
-    rotate: 180deg;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    margin-right: 30px;
-    border: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    fill: #a0a0a0;
+label {
+    font-size: 16px;
+    color: #555;
+    display: block;
+    margin-bottom: 5px;
+    margin-right: auto;
+    margin-left: 10px;
+    text-align: left;
 }
-
-#short:active {
-    fill: #d4d4d4;
-}
-
-#long.active {
-    background-color: #344e35;
-    fill: #d4d4d4;
-    box-shadow: 0 0 10px 0 #476a48;
-}
-
-#short.active {
-    background-color: #644343;
-    fill: #d4d4d4;
-    box-shadow: 0 0 10px 0 #644343;
-
-}
-
-
 
 input {
-    /* width: 100%; */
+    width: 100%;
     padding: 8px;
     font-size: 14px;
-    margin: 4px 0 14px 0;
+    margin: 6px 0;
     border-radius: 8px;
-    border: 1px solid #606060;
+    border: 1px solid #ddd;
     box-sizing: border-box;
-    background-color: #353535;
-    color: #ddd;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    /* user-select: auto; */
+
 }
 
 input::placeholder {
-    color: #969696;
+    color: rgb(150, 150, 150);
     opacity: 0.6;
 }
 
-input:focus {
-    background-color: #454545;
-    border-color: #949494;
-    outline: none;
-    box-shadow: 0 0 3px;
+.position-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
 }
 
-.resultBox {
+.position-buttons button {
+    padding: 8px 14px;
+    font-size: 16px;
+    width: 48%;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 0 2%;
+    transition: all 0.3s ease;
+}
+
+#longButton {
+    background-color: #F44336;
+    color: white;
+}
+
+#shortButton {
+    background-color: #F44336;
+    color: white;
+}
+
+.active {
+    filter: brightness(1.2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border: 2px solid white;
+}
+
+button {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+    width: 100%;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
     margin-top: 15px;
-    margin-bottom: 20px;
+}
+
+button:disabled {
+    background-color: #999;
+    cursor: not-allowed;
+}
+
+button:active:enabled {
+    filter: brightness(0.6);
+}
+
+.result-box {
+    margin-top: 15px;
     padding: 10px;
     font-size: 16px;
-    background-color: #353535;
-    border: 1px solid #606060;
+    background: #f8f9fa;
+    border: 1px solid #ddd;
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     min-height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
+    color: #333;
+}
+
+/* Тёмная тема */
+.dark-theme {
+    background: linear-gradient(135deg, #202020, #202020);
+    color: #fff;
+}
+
+.dark-theme .container {
+    background-color: #202020;
+    box-shadow: 0 0px 0px rgba(0, 0, 0, 0.3);
+}
+
+.dark-theme .warning {
+    color: #f0ad4e;
+}
+
+.dark-theme label, .dark-theme input {
     color: #ddd;
 }
 
+.dark-theme input {
+    background-color: #303030;
+    border: 1px solid #777;
+}
 
-/* класс для уведомления о выборе Лонг или Шорт */
-.resultBoxErr {
-    color: #ff5050;
+.dark-theme button {
+    background-color: #0069d9;
+}
+
+.dark-theme .result-box {
+    background-color: #666;
+    color: #fff;
+}
+
+.dark-theme h2 {
+    color: #fff;
+}
+
+/* Цвета кнопок при смене тем */
+body:not(.dark-theme) #calculateButton {
+    background-color: #4CAF50; /* Зелёный для светлой темы */
+}
+
+body:not(.dark-theme) #longButton {
+    background-color: #4CAF50; /* Красный для светлой темы */
+}
+
+body.dark-theme #calculateButton {
+    background-color: #0069d9; /* Синий для кнопки Рассчитать в тёмной теме */
+}
+
+body.dark-theme #longButton {
+    background-color: #0069d9; /* СИний для кнопки Лонг в тёмной теме */
+}
+
+/* Смена темы через переключатель */
+.theme-switch-wrapper {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+}
+
+/* Стили для кнопки, фиксируем её на экране */
+.dropdown {
+    position: fixed; /* Фиксированное положение */
+    top: 1px; /* Расстояние от верхнего края */
+    left: 10px; /* Расстояние от левого края */
+    z-index: 1000; /* Чтобы кнопка была поверх других элементов */
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropbtn {
+    background-color: #ccc;
+    color: white;
+    padding: 2px 10px; /* Изменены отступы (высота и ширина кнопки) */
+    font-size: 18px; /* Увеличен шрифт */
+    border: none;
+    cursor: pointer;
+    border-radius: px; /* Закругленные углы */
+}
+
+/* Стили для валютных символов */
+.currency-symbol {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* Стили для кнопки выбора валюты */
+.theme-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.theme-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    border-radius: 50%;
+    left: 4px;
+    bottom: 4px;
+    background-color: #0069d9;
+    transition: 0.4s;
+}
+
+input:checked + .slider:before {
+    background-color: #ffffff;
+}
+
+input:checked + .slider {
+    background-color: #4CAF50;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.slider .left-icon, .slider .right-icon {
+    position: absolute;
+    transform: translateY(0%);
+    font-size: 16px;
+    transition: 0.4s;
+}
+
+.slider .left-icon {
+    top: 7px;
+    left: 9px;
+    opacity: 1;
+}
+
+.slider .right-icon {
+    top: 7px;
+    right: 34px;
+    opacity: 0;
+}
+
+input:checked + .slider .right-icon {
+    opacity: 1;
+    transform: translateX(25px) translateY(0px);
+}
+
+input:checked + .slider .left-icon {
+    opacity: 0;
+    transform: translateX(25px) translateY(0px);
+}
+
+/* Кнопка сброса */
+#resetButton {
+    background-color: #ff5722;
+    margin-top: 10px;
+}
+
+#resetButton:hover {
+    background-color: #e64a19;
+}
+
+/* Стили для подменю */
+.submenu {
+    position: relative;
+}
+
+.submenu-btn {
+    background-color: #f9f9f9;
+    color: #333;
+    padding: 12px 16px;
+    font-size: 16px;
+    text-align: left;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    display: block;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.submenu-btn:hover {
+    background-color: #f1f1f1;
+}
+
+/* Скрытое подменю */
+.submenu-content {
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    min-width: 160px;
+    background-color: #f9f9f9;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 8px;
+}
+
+.submenu-content a {
+    padding: 12px 16px;
+    color: black;
+    text-decoration: none;
+    display: block;
+}
+
+.submenu-content a:hover {
+    background-color: #f1f1f1;
+}
+
+/* Подменю по умолчанию показывается при наведении на родительский элемент */
+.submenu:hover .submenu-content {
+    display: block;
+}
+
+/* Для мобильных устройств, скрываем подменю по умолчанию и показываем его при клике */
+@media (max-width: 768px) {
+    .submenu-content {
+        display: none; /* По умолчанию скрыто */
+    }
+
+    /* Активируем подменю по клику */
+    .submenu.active .submenu-content {
+        display: block; /* Показываем при нажатии */
+    }
 }
 
 
-.out {
+/* Подменю и его элементы в тёмной теме */
+body.dark-theme .submenu-content {
+    display: none; /* Подменю по умолчанию скрыто */
+    position: absolute;
+    left: 100%;
+    top: 0;
+    min-width: 160px;
+    background-color: #333; /* Обеспечиваем тёмный фон подменю */
+    color: #ddd; /* Светлый текст */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    z-index: 1;
+}
+
+/* Пункты подменю в тёмной теме */
+body.dark-theme .submenu-content a {
+    background-color: #333; /* Убедимся, что фон пункта подменю тёмный */
+    color: #ddd; /* Текст светлый */
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+/* Пункт подменю при наведении */
+body.dark-theme .submenu-content a:hover {
+    background-color: #444; /* Темнеет при наведении */
+    color: #fff; /* Текст белый при наведении */
+}
+
+/* Кнопка подменю в тёмной теме */
+body.dark-theme .submenu-btn {
+    background-color: #444; /* Тёмный фон */
+    color: #ddd; /* Светлый текст */
+    padding: 12px 16px;
+    text-align: left;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    display: block;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+/* Кнопка подменю при наведении */
+body.dark-theme .submenu-btn:hover {
+    background-color: #555; /* Темнеет при наведении */
+}
+
+/* Показать подменю при наведении на родительский элемент */
+body.dark-theme .submenu:hover .submenu-content {
+    display: block; /* Показываем подменю */
+}
+
+/* Изменения для самого меню и всех его частей */
+body.dark-theme .dropdown-content {
+    background-color: #444; /* Фон для всех элементов в подменю */
+    color: #ddd; /* Светлый текст */
+}
+
+/* Подменю в светлой теме тоже корректно */
+body:not(.dark-theme) .submenu-content {
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Пункт подменю в светлой теме */
+body:not(.dark-theme) .submenu-content a {
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+body:not(.dark-theme) .submenu-content a:hover {
+    background-color: #f1f1f1;
+    color: #000;
+}
+
+
+/* Кнопки снизу экрана */
+
+.button-container {
     display: flex;
-    justify-content: space-around;
-    margin: 0 30px;
+    justify-content: space-between;  /* Распределяет кнопки на всю доступную ширину */
+    position: fixed;
+    bottom: 10px;
+    left: 10px;  /* Отступ от левого края */
+    right: 10px;  /* Отступ от правого края */
+    padding: 0 20px; /* Отступы между кнопками и краями экрана */
+    gap: 40px;  /* Устанавливает расстояние между кнопками */
 }
-
 
 .btn {
-    position: relative;
-    overflow: hidden;
-    height: 40px;
-    border-radius: 100px;
-    width: 200px;
+    padding: 8px 20px; /* Размер кнопки */
+    background-color: #007bff;
+    color: white;
     border: none;
-    margin: 3px 0 3px 75px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    min-width: 20px; /* Минимальная ширина кнопки */
+    text-align: center;
 }
 
-
-.btnResult {
-    background-color: #353535;
-    color: #a0a0a0;
-    width: 300px;
-    height: 40px;
-    margin-right: 90px;
-}
-
-.btnResult:active {
-    background-color: #484848;
-    color: #d4d4d4;
-    box-shadow: 0 0 10px -5px #b8b8b8;
-}
-
-.btnReset {
-    background-color: #463d28;
-    fill: #a0a0a0;
-    width: 80px;
-    height: 30px;
-    padding: 2px 8px 0 5px;
-    /* display: flex;
-    justify-content: center; */
-    margin-left: 10px;
-    right: 80px;
-    margin-top: 8px;
-}
-
-.btnReset:active {
-    fill: #d4d4d4;
-    background-color: #736442;
-    box-shadow: 0 0 10px -5px #cdb377;
+.btn:hover {
+    background-color: #0056b3;
 }
 
 
 
-/* ТрэйдингВью */
-.trade {
-    width: 100%;
-    height: 100%;
+/* Блок с трейдинг вью */
+#tradingView {
+    width: 100%;  /* Занимает всю ширину */
+    height: calc(100vh - 70px);  /* Растягиваем на всю высоту экрана */
+    margin-bottom: 70px;  /* Чтобы оставить место для кнопок */
     display: none
 }
 
-
-/* Нижняя панель */
-
-.niz {
-    position: fixed;  /* Фиксируем элемент наверху */
-    bottom: 0;           /* Прижимаем к верхней границе */
-    width: 94%;      /* Растягиваем на всю ширину */
-    margin-bottom: 20px;
-    border-radius: 30px;
-    background-color: #404040; /* Пример фона для наглядности */
-    fill: #a0a0a0;     /* Цвет текста */
-    padding: 10px;    /* Отступы внутри */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Тень для эффекта */
-    justify-content: space-around;
-    display: flex;
-    /* z-index: 102; */
+/* Блок калькулятора (если он есть) */
+#calculator {
+    display: none;  /* Изначально скрыт, если переключаем на TradingView */
 }
 
-.btnMenu:active {
-    fill: #d4d4d4;
+/* Контейнер для iframe */
+.tradingview-widget-container {
+    position: relative;
+    width: 100%;
+    max-width: 980px; /* Максимальная ширина */
+    height: 80vh; /* Высота относительно высоты экрана */
 }
 
-#btnCalulator.active {
-    /* background-color: #344e35; */
-    fill: #d4d4d4;
-    filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.4));
+/* Стиль для самого iframe */
+iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
 }
 
-#tradingView.active {
-    /* background-color: #344e35; */
-    fill: #d4d4d4;
-    filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.4));
+/* Подсветка только для активной кнопки */
+.button-container .btn.active {
+    background-color: #007bff; /* Синий фон */
+    color: white; /* Белый текст */
+    font-weight: bold;
 }
+
