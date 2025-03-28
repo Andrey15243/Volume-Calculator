@@ -71,6 +71,9 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("page-calculator").style.display = "flex";
         document.getElementById("header").style.display = "flex";
         document.getElementById("tradingview-widget").style.display = "none";
+
+        // Убираем фоновое изображение
+    document.body.style.backgroundImage = "none";
     });
     
     tradingViewBtn.addEventListener("click", () => {
@@ -78,20 +81,25 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("page-calculator").style.display = "none";
         document.getElementById("header").style.display = "none";
         document.getElementById("tradingview-widget").style.display = "flex";
+
+        // Добавляем фоновое изображение для body
+    document.body.style.backgroundImage = "url('./icons/NotLud.png')";
+    document.body.style.backgroundSize = "cover"; // Растягивает изображение на весь экран
+    document.body.style.backgroundPosition = "center"; // Выравнивает по центру
     });
     
 
-    function selectPosition(type) {
-        tradePosition = type;
-        longBtn.classList.remove("active");
-        shortBtn.classList.remove("active");
+    // function selectPosition(type) {
+    //     tradePosition = type;
+    //     longBtn.classList.remove("active");
+    //     shortBtn.classList.remove("active");
 
-        if (type === "long") {
-            longBtn.classList.add("active");
-        } else {
-            shortBtn.classList.add("active");
-        }
-    }
+    //     if (type === "long") {
+    //         longBtn.classList.add("active");
+    //     } else {
+    //         shortBtn.classList.add("active");
+    //     }
+    // }
 
     // Функция выбора позиции
     function selectPosition(type) {
@@ -156,7 +164,11 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         const volume = (riskAmount / stopLossSize) * entry;
-        resultBox.textContent = `Объём входа: ${volume.toFixed(2)}`;
+        if (risk >= 5) {
+            resultBox.textContent = `С тебя ${volume.toFixed(2)}, лудоман`;
+        } else {
+            resultBox.textContent = `Объём входа: ${volume.toFixed(2)}`;
+        }
 
     });
 
@@ -167,6 +179,7 @@ document.addEventListener("DOMContentLoaded", function () {
         entryInput.value = "";
         stoplossInput.value = "";
         resultBox.textContent = "Ожидание данных...";
+        resultBox.classList.remove("resultBoxErr");
         position = null;
         longBtn.classList.remove("active");
         shortBtn.classList.remove("active");
